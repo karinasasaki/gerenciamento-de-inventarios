@@ -3,7 +3,7 @@ class InventoriesController < ApplicationController
 
   # GET /inventories or /inventories.json
   def index
-    @inventories = Inventory.all
+    @inventories = Inventory.all.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /inventories/1 or /inventories/1.json
@@ -25,7 +25,7 @@ class InventoriesController < ApplicationController
 
     respond_to do |format|
       if @inventory.save
-        format.html { redirect_to inventory_url(@inventory), notice: "Inventory was successfully created." }
+        format.html { redirect_to inventory_url(@inventory), notice: "Inventário criado com sucesso!" }
         format.json { render :show, status: :created, location: @inventory }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class InventoriesController < ApplicationController
   def update
     respond_to do |format|
       if @inventory.update(inventory_params)
-        format.html { redirect_to inventory_url(@inventory), notice: "Inventory was successfully updated." }
+        format.html { redirect_to inventory_url(@inventory), notice: "O inventário foi atualizado." }
         format.json { render :show, status: :ok, location: @inventory }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,9 +50,8 @@ class InventoriesController < ApplicationController
   # DELETE /inventories/1 or /inventories/1.json
   def destroy
     @inventory.destroy
-
     respond_to do |format|
-      format.html { redirect_to inventories_url, notice: "Inventory was successfully destroyed." }
+      format.html { redirect_to inventories_url, notice: "O inventário foi excluído." }
       format.json { head :no_content }
     end
   end

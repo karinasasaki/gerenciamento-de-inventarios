@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      inventory: Inventário
+    attributes:
+      inventory:
+        id: Código
+        name: Nome
+        amount: Quantidade
+        price: Preço unitário
+        created_at: Criado em
+        updated_at: Atualizado em
+        Valuetotal: Valor Total

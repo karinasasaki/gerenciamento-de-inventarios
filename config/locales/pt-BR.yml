@@ -1,6 +1,14 @@
----
 pt-BR:
   activerecord:
+    models:
+      inventory: Inventário
+    atrributes:
+      inventory:
+        id: "Identificador"
+        name: Nome
+        amount: Quantidade
+        price: Preço
+        valueTotal: Valor Total
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
